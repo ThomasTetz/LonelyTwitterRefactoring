@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import ca.ualberta.cs.lonelytweet.NormalLonelyTweet;
+
 public class LonelyTwitterActivity extends Activity {
 
 	private EditText bodyText;
@@ -40,7 +42,8 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
-	public void save(View v) {
+	// @Refactor 5: deleted unused parameter View v
+	public void save() {
 		String text = bodyText.getText().toString();
 
 		NormalLonelyTweet tweet;
@@ -60,10 +63,18 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 
-	public void clear(View v) {
+	// @Refactor 5: deleted unused parameter View v
+	public void clear() {
 		tweets.clear();
 		adapter.notifyDataSetChanged();
 		tweetsProvider.saveTweets(tweets);
 	}
 
+	public EditText getBodyText() {
+		return bodyText;
+	}
+
+	public void setBodyText(EditText bodyText) {
+		this.bodyText = bodyText;
+	}
 }
